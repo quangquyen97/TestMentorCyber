@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import axios from "axios"
-import { TOKENCYBER } from '../ulti/setting';
-import { useDispatch, useSelector } from 'react-redux';
-import { GetUserList } from '../redux/reducer/GetUserListReducer';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { dangNhapAction } from '../redux/action/loginAction';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function LoginForm({Login, err}) {
-  const adminUser = {
-    "taiKhoan": "",
-    "matKhau": ""
-  }
   const [details, setDetails] = useState({taiKhoan:"",matKhau:""});
 
   const dispatch = useDispatch();

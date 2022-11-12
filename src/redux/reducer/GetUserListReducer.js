@@ -1,9 +1,6 @@
 
 
-let user = {};
-if (localStorage.getItem('USER_LOGIN')) {
-    user = JSON.parse(localStorage.getItem('USER_LOGIN'));
-}
+
 
 const stateDefault = {
     arrUser:[],

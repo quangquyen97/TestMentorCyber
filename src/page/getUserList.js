@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { history } from '../App'
 import { getUserList } from '../redux/action/getUserListAction'
@@ -7,12 +7,15 @@ function GetUserList() {
   const dispatch = useDispatch()
   const arrUser = useSelector(state => state.GetUserList.arrUser)
   const [user, setUser] = useState({ taiKhoan: "", matKhau: "" });
-  const userLogin = JSON.stringify(localStorage.getItem('USER_LOGIN'))
+  const userLogin = window.localStorage.getItem('USER_LOGIN')
+  console.log(userLogin)
   useEffect(() => {
-    if(userLogin == ''){
+    if(userLogin){
       dispatch(getUserList())
     }else{
       alert("bạn chưa đăng nhập")
+      history.push('login');
+      history.go(0)
     }
   }, [])
 
@@ -21,7 +24,7 @@ function GetUserList() {
     setUser({ taiKhoan: "", matKhau: "" });
     history.push("/login")
     history.go(0)
-    localStorage.clear()
+    window.localStorage.clear()
   }
   return (
     <div className='welcome'>

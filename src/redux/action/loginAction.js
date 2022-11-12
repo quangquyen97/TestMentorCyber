@@ -1,6 +1,5 @@
 import axios from "axios";
 import { history } from "../../App";
-import GetUserList from "../../page/getUserList";
 import { TOKENCYBER } from "../../ulti/setting";
 
 
@@ -15,10 +14,10 @@ export const dangNhapAction = (details) => {
             }
         }).then((res) => {
             console.log(res)
-            if (res.status == 200) {
+            if (res.status === 200) {
+                window.localStorage.setItem('USER_LOGIN', JSON.stringify(res.data.content.accessToken));
                 history.push('/laydanhsachnguoidung')
                 history.go(0)
-
             }
         }).catch((err) => {
             console.log(err)
@@ -35,13 +34,13 @@ export const dangKyAction = (details) => {
             }
         }).then((res) => {
             console.log(res)
-            if (res.status == 200) {
+            if (res.status === 200) {
                 alert('create thanh cong')
                 history.push('/login')
             }
         }).catch((err) => {
             console.log(err)
-             if(err.response.status == 400){
+             if(err.response.status === 400){
                 alert('Tai Khoan hoac email da ton tai')
             }
         })
