@@ -23,7 +23,7 @@ function createUser() {
     setErr(validate(details))
     if (Object.keys(validate(details)).length === 0) {
       dispatch(dangKyAction(details))
-      console.log(Object.keys(errors).length)
+
     }
 
 

@@ -17,10 +17,9 @@ export const getUserList = () => {
         dispatch({
             type: 'GET_USER_LIST',
             arrUser: result.data.content})
-        console.log(result)
 
     }catch(err){
-        console.log(err)
+
     }
  }
 }

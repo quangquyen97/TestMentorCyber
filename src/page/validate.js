@@ -1,7 +1,6 @@
 const validate = (values) => {
     const err = {}
     const regexTk = /^[A-Z a-z]+$/
-    const regexPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,20}$/
     const regexSdt =/^[0-9].{9,12}$/
   
     if(!values.taiKhoan){

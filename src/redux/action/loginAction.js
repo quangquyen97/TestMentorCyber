@@ -39,7 +39,7 @@ export const dangKyAction = (details) => {
 
             // history.go(0)
         }).catch((err) => {
-            console.log(err)
+
                 swal('Đăng ký thất bại', `${err.response.data.content}`,'error')
             
         })

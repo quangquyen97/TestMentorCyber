@@ -12,7 +12,6 @@ export const GetUserList = (state = stateDefault, action) => {
     switch (action.type) {
         case 'GET_USER_LIST': {
             state.arrUser = action.arrUser
-            console.log(action.arrUser)
             return { ...state }
         }
         case 'SIGN_UP':{

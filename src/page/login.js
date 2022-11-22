@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { dangNhapAction } from '../redux/action/loginAction';
 import { NavLink } from 'react-router-dom';
-import validate from './validate';
 
 function LoginForm({ Login, err }) {
   const [details, setDetails] = useState({ taiKhoan: "", matKhau: "" });
@@ -25,11 +24,9 @@ function LoginForm({ Login, err }) {
     e.preventDefault();
 
     setErr(validateLogin(details))
-    console.log(validateLogin(details))
     if (Object.keys(validateLogin(details)).length === 0) {
 
       dispatch(dangNhapAction(details))
-      console.log(Object.keys(details).length)
     }
   }
 

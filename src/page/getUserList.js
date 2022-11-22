@@ -9,7 +9,7 @@ function GetUserList() {
   const arrUser = useSelector(state => state.GetUserList.arrUser)
   const [user, setUser] = useState({ taiKhoan: "", matKhau: "" });
   const userLogin = window.localStorage.getItem('USER_LOGIN')
-  console.log(userLogin)
+
   useEffect(() => {
     if(userLogin){
       dispatch(getUserList())
@@ -19,7 +19,7 @@ function GetUserList() {
     }
   }, [])
 
-  console.log(arrUser)
+
   const Logout = () => {
     setUser({ taiKhoan: "", matKhau: "" });
     history.push("/login")
