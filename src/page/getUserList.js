@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import swal from 'sweetalert'
 import { history } from '../App'
 import { getUserList } from '../redux/action/getUserListAction'
 function GetUserList() {
@@ -13,9 +14,8 @@ function GetUserList() {
     if(userLogin){
       dispatch(getUserList())
     }else{
-      alert("bạn chưa đăng nhập")
+      swal("Không đủ quyền truy cập",'bạn phải đăng nhập','error')
       history.push('login');
-      history.go(0)
     }
   }, [])
 
@@ -23,7 +23,6 @@ function GetUserList() {
   const Logout = () => {
     setUser({ taiKhoan: "", matKhau: "" });
     history.push("/login")
-    history.go(0)
     window.localStorage.clear()
   }
   return (

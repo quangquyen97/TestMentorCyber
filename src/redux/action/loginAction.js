@@ -1,31 +1,30 @@
 import axios from "axios";
 import { history } from "../../App";
 import { TOKENCYBER } from "../../ulti/setting";
+import swal from "sweetalert";
 
 
 
 export const dangNhapAction = (details) => {
-
+    
     return () => {
 
-        axios.post("https://movienew.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap", details, {
+       const result =  axios.post("https://movienew.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap", details, {
             headers: {
                 TokenCyberSoft: TOKENCYBER
             }
         }).then((res) => {
-            console.log(res)
             if (res.status === 200) {
                 window.localStorage.setItem('USER_LOGIN', JSON.stringify(res.data.content.accessToken));
                 history.push('/laydanhsachnguoidung')
-                history.go(0)
             }
+            
         }).catch((err) => {
-            console.log(err)
+            swal('Đăng nhập thất bại',err.response.data.content,'error')
         })
     }
 }
 export const dangKyAction = (details) => {
-
     return () => {
 
         axios.post("https://movienew.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy", details, {
@@ -33,16 +32,17 @@ export const dangKyAction = (details) => {
                 TokenCyberSoft: TOKENCYBER
             }
         }).then((res) => {
-            console.log(res)
             if (res.status === 200) {
-                alert('create thanh cong')
+                swal('Đăng ký thành công', `${res.data.message}`, 'success')
                 history.push('/login')
             }
+
+            // history.go(0)
         }).catch((err) => {
             console.log(err)
-             if(err.response.status === 400){
-                alert('Tai Khoan hoac email da ton tai')
-            }
+                swal('Đăng ký thất bại', `${err.response.data.content}`,'error')
+            
         })
+      
     }
 }
